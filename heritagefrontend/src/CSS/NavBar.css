@@ -1,0 +1,66 @@
+.NavBar {
+    background-color: #3E2723;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 3cm;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.NavBar img {
+    height: 80%;
+    object-fit: contain;
+}
+
+.searchBar {
+    width: 30%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.NavActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cartIcon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accountIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.navButton {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.navButton:hover {
+    color: #ff9800; /* Amber color for hover effect */
+}
+
+.NavMenu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}

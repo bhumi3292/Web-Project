@@ -1,0 +1,30 @@
+/*---------------Side bar-----------------*/
+.Sidebar {
+    width: 5cm;
+    height: 8cm;
+    background-color: #3E2723;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 2cm;
+    margin-left: 0.5cm;
+}
+
+.Sidebar button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #3E2723;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.Sidebar button:hover {
+    background-color: #5D4037;
+}
+
+/*--------------------------------PAge-----------------------*/
