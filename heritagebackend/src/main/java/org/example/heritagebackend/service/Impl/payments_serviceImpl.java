@@ -1,8 +1,10 @@
 package org.example.heritagebackend.service.Impl;
 
 import lombok.RequiredArgsConstructor;
-import org.example.heritagebackend.Entity.payments;
+import org.example.heritagebackend.Entity.Orders;
+import org.example.heritagebackend.Entity.Payments;
 import org.example.heritagebackend.pojo.Payments_pojo;
+import org.example.heritagebackend.repository.Orders_repo;
 import org.example.heritagebackend.repository.Payments_repo;
 import org.example.heritagebackend.service.payments_service;
 import org.springframework.stereotype.Service;
@@ -15,32 +17,38 @@ import java.util.Optional;
 
 public class payments_serviceImpl implements payments_service {
     private final Payments_repo payments_repo;
+    private  final Orders_repo orders_repo;
     @Override
-    public List<payments> getPayments() {
+    public List<Payments> getPayments() {
         return payments_repo.findAll();
     }
 
     @Override
-    public Optional<payments> getPaymentsById(Long Id) {
+    public Optional<Payments> getPaymentsById(Long Id) {
 
         return payments_repo.findById(Id);
     }
 
     @Override
-    public payments addPayments(Payments_pojo PaymentsPojo) {
-        payments payments=new payments();
+    public Payments addPayments(Payments_pojo PaymentsPojo) {
+        Payments payments=new Payments();
         payments.setPaymentAmount(PaymentsPojo.getPaymentAmount());
         payments.setPaymentDate(new Date());
         payments.setPaymentMethod(PaymentsPojo.getPaymentMethod());
+        Optional<Orders> ordersOptional=orders_repo.findById(PaymentsPojo.getOrderId());
+        if(ordersOptional.isPresent()){
+            Orders orders=ordersOptional.get();
+            payments.setOrder(orders);
+        }
 
         return payments_repo.save(payments);
     }
 
     @Override
-    public payments updatePayments(Payments_pojo PaymentsPojo, Long id) {
-        Optional<payments> paymentsOptional=payments_repo.findById(id);
+    public Payments updatePayments(Payments_pojo PaymentsPojo, Long id) {
+        Optional<Payments> paymentsOptional=payments_repo.findById(id);
         if(paymentsOptional.isPresent()){
-            payments payment=paymentsOptional.get();
+            Payments payment=paymentsOptional.get();
             payment.setPaymentAmount(PaymentsPojo.getPaymentAmount());
             payment.setPaymentDate(new Date());
             payment.setPaymentMethod(PaymentsPojo.getPaymentMethod());

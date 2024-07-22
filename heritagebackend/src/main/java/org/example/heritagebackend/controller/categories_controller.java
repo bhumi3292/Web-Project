@@ -1,7 +1,7 @@
 package org.example.heritagebackend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.heritagebackend.Entity.categories;
+import org.example.heritagebackend.Entity.Categories;
 import org.example.heritagebackend.pojo.Categories_pojo;
 import org.example.heritagebackend.service.categories_service;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class categories_controller {
     private final categories_service categoriesService;
 
     @PostMapping
-    public categories addCategory(@RequestBody Categories_pojo categoriesPojo) {
+    public Categories addCategory(@RequestBody Categories_pojo categoriesPojo) {
         return categoriesService.addCategories(categoriesPojo);
     }
 
@@ -31,19 +31,19 @@ public class categories_controller {
     }
 
     @GetMapping
-    public List<categories> getAllCategories() {
+    public List<Categories> getAllCategories() {
         return categoriesService.getCategories();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<categories> getCategoryById(@PathVariable Long id) {
-        Optional<categories> categoryOptional = categoriesService.getCategoriesById(id);
+    public ResponseEntity<Categories> getCategoryById(@PathVariable Long id) {
+        Optional<Categories> categoryOptional = categoriesService.getCategoriesById(id);
         return categoryOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<categories> updateCategory(@PathVariable Long id, @RequestBody Categories_pojo categoriesPojo) {
-        categories updatedCategory = categoriesService.updateCategories(categoriesPojo, id);
+    public ResponseEntity<Categories> updateCategory(@PathVariable Long id, @RequestBody Categories_pojo categoriesPojo) {
+        Categories updatedCategory = categoriesService.updateCategories(categoriesPojo, id);
         if (updatedCategory != null) {
             return ResponseEntity.ok(updatedCategory);
         } else {

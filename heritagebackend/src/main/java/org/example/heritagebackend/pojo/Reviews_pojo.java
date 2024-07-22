@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.heritagebackend.Entity.customers;
-import org.example.heritagebackend.Entity.products;
+//import org.example.heritagebackend.Entity.customers;
+//import org.example.heritagebackend.Entity.products;
 
 import java.util.Date;
 
@@ -18,6 +18,6 @@ public class Reviews_pojo {
     private Integer rating;
     private String comment;
     private Date reviewDate;
-    private products product;
-    private customers customer;
+//    private products product;
+//    private customers customer;
 }

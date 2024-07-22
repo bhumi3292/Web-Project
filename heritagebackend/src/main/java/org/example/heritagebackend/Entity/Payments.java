@@ -9,7 +9,7 @@ import java.util.Date;
 @Table
 @Setter
 @Getter
-public class payments {
+public class Payments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payment_id_seq")
@@ -17,7 +17,6 @@ public class payments {
     private Long paymentId;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     private Date paymentDate;
 
     @Column(nullable = false)
@@ -28,5 +27,5 @@ public class payments {
 
     @OneToOne
     @JoinColumn(name = "order_id", referencedColumnName = "orderId", foreignKey = @ForeignKey(name = "fk_order_id"))
-    private orders order; 
+    private Orders order;
 }

@@ -4,13 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Table
 @Setter
 @Getter
-public class customers {
+public class Customers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customers_id_seq")

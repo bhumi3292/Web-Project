@@ -25,12 +25,12 @@ public class reviews {
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date reviewDate;
-
-    @ManyToOne
-    @JoinColumn(name = "productId", referencedColumnName = "productId", foreignKey = @ForeignKey(name = "fk_product_id"))
-    private products product;
-
-    @ManyToOne
-    @JoinColumn(name = "customerId", referencedColumnName = "customerId", foreignKey = @ForeignKey(name = "fk_customer_id"))
-    private customers customer;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "productId", referencedColumnName = "productId", foreignKey = @ForeignKey(name = "fk_product_id"))
+//    private products product;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "customerId", referencedColumnName = "customerId", foreignKey = @ForeignKey(name = "fk_customer_id"))
+//    private customers customer;
 }

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Table
 @Setter
 @Getter
-public class categories {
+public class Categories {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Categories_id_seq")
@@ -18,8 +18,5 @@ public class categories {
     @Column(nullable = false)
     private String categoryName;
 
-    @ManyToOne
-    @JoinColumn(name = "productId", referencedColumnName = "productId", foreignKey = @ForeignKey(name = "fk_product_id"))
-    private products product;
 
 }

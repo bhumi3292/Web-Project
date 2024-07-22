@@ -1,15 +1,19 @@
 package org.example.heritagebackend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
 @Setter
 @Getter
-public class orders {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_id_seq")
@@ -18,7 +22,7 @@ public class orders {
 
     @ManyToOne
     @JoinColumn(name = "customerId", referencedColumnName = "customerId", foreignKey = @ForeignKey(name = "fk_customer_id"))
-    private customers customer;
+    private Customers customer;
 
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -34,8 +38,10 @@ public class orders {
     private String orderStatus;
 
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private payments payment;
+    private Payments payment;
 
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private orderShipments orderShipment;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) // For automatic saving of order items
+    @JsonIgnore
+    private List<OrderItems> orderItems = new ArrayList<>();
 }

@@ -1,7 +1,7 @@
 package org.example.heritagebackend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.heritagebackend.Entity.cart;
+import org.example.heritagebackend.Entity.Cart;
 import org.example.heritagebackend.pojo.Cart_pojo;
 import org.example.heritagebackend.service.cart_service;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class cart_controller {
     private final cart_service cartService;
 
     @PostMapping
-    public cart addCart(@RequestBody Cart_pojo cartPojo) {
+    public Cart addCart(@RequestBody Cart_pojo cartPojo) {
         return cartService.addCart(cartPojo);
     }
 
@@ -29,19 +29,19 @@ public class cart_controller {
     }
 
     @GetMapping
-    public List<cart> getAllCarts() {
+    public List<Cart> getAllCarts() {
         return cartService.getAllCarts();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<cart> getCart(@PathVariable Long id) {
-        Optional<cart> cartOptional = cartService.getCart(id);
+    public ResponseEntity<Cart> getCart(@PathVariable Long id) {
+        Optional<Cart> cartOptional = cartService.getCart(id);
         return cartOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<cart> updateCart(@PathVariable Long id, @RequestBody Cart_pojo cartPojo) {
-        cart updatedCart = cartService.updateCart(id, cartPojo);
+    public ResponseEntity<Cart> updateCart(@PathVariable Long id, @RequestBody Cart_pojo cartPojo) {
+        Cart updatedCart = cartService.updateCart(id, cartPojo);
         if (updatedCart != null) {
             return ResponseEntity.ok(updatedCart);
         } else {

@@ -23,7 +23,7 @@ public class orderShipments {
     @Column(nullable = false)
     private String shipmentStatus;
 
-    @OneToOne
-    @JoinColumn(name = "order_id", referencedColumnName = "orderId", foreignKey = @ForeignKey(name = "fk_order_id"))
-    private orders order; // Added reference to orders entit
+//    @OneToOne
+//    @JoinColumn(name = "order_id", referencedColumnName = "orderId", foreignKey = @ForeignKey(name = "fk_order_id"))
+//    private Orders order; // Added reference to orders entit
 }

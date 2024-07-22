@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.heritagebackend.Entity.products;
+import org.example.heritagebackend.Entity.Products;
 
 @Getter
 @Setter
@@ -13,5 +13,4 @@ import org.example.heritagebackend.Entity.products;
 public class Categories_pojo {
     private Long categoryId;
     private String categoryName;
-    private products product;
 }

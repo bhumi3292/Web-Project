@@ -8,7 +8,7 @@ import lombok.Setter;
 @Table
 @Setter
 @Getter
-public class orderItems {
+public class OrderItems {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_item_id_seq")
@@ -25,9 +25,9 @@ public class orderItems {
 
     @ManyToOne
     @JoinColumn(name = "orderId", referencedColumnName = "orderId", foreignKey = @ForeignKey(name = "fk_order_id"))
-    private orders order;
+    private Orders order;
 
     @ManyToOne
     @JoinColumn(name = "productId", referencedColumnName = "productId", foreignKey = @ForeignKey(name = "fk_product_id"))
-    private products product;
+    private Products product;
 }

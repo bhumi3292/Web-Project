@@ -16,4 +16,5 @@ public class Payments_pojo {
     private Date paymentDate;
     private Double paymentAmount;
     private String paymentMethod;
+    private  Long orderId;
 }

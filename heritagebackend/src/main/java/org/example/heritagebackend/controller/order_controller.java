@@ -1,7 +1,7 @@
 package org.example.heritagebackend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.heritagebackend.Entity.orders;
+import org.example.heritagebackend.Entity.Orders;
 import org.example.heritagebackend.pojo.Orders_pojo;
 import org.example.heritagebackend.service.order_service;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class order_controller {
     private final order_service orderService;
 
     @PostMapping
-    public orders addOrder(@RequestBody Orders_pojo ordersPojo) {
+    public Orders addOrder(@RequestBody Orders_pojo ordersPojo) {
         return orderService.addOrders(ordersPojo);
     }
 
@@ -29,19 +29,19 @@ public class order_controller {
     }
 
     @GetMapping
-    public List<orders> getAllOrders() {
+    public List<Orders> getAllOrders() {
         return orderService.getOrders();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<orders> getOrder(@PathVariable Long id) {
-        Optional<orders> orderOptional = orderService.getOrdersById(id);
+    public ResponseEntity<Orders> getOrder(@PathVariable Long id) {
+        Optional<Orders> orderOptional = orderService.getOrdersById(id);
         return orderOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<orders> updateOrder(@PathVariable Long id, @RequestBody Orders_pojo ordersPojo) {
-        orders updatedOrder = orderService.updateOrders(ordersPojo, id);
+    public ResponseEntity<Orders> updateOrder(@PathVariable Long id, @RequestBody Orders_pojo ordersPojo) {
+        Orders updatedOrder = orderService.updateOrders(ordersPojo, id);
         if (updatedOrder != null) {
             return ResponseEntity.ok(updatedOrder);
         } else {

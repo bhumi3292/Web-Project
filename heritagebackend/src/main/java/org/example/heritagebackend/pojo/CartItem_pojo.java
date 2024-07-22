@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.heritagebackend.Entity.products;
+import org.example.heritagebackend.Entity.Cart;
+import org.example.heritagebackend.Entity.Products;
 
 @Getter
 @Setter
@@ -13,6 +14,6 @@ import org.example.heritagebackend.Entity.products;
 public class CartItem_pojo {
     private Long cartItemId;
     private Integer quantity;
-    private org.example.heritagebackend.Entity.cart cart;
-    private products product;
+    private Long cartId;
+    private Long productId;
 }

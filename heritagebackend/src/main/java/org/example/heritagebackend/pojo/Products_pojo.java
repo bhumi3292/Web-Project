@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,6 +20,12 @@ public class Products_pojo {
     private Integer stockQuantity;
     private MultipartFile profile;
     private boolean availability;
+    private MultipartFile image;
+    private Long categoryId;
+    private byte[] ImageBytes;
+    public byte[] getImageBytes() throws IOException {
+        return image != null ? image.getBytes() : null;
+    }
 
 
 }

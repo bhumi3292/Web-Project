@@ -1,7 +1,7 @@
 package org.example.heritagebackend.service.Impl;
 
 import lombok.RequiredArgsConstructor;
-import org.example.heritagebackend.Entity.customers;
+import org.example.heritagebackend.Entity.Customers;
 import org.example.heritagebackend.pojo.Customers_pojo;
 import org.example.heritagebackend.repository.Customer_repo;
 import org.example.heritagebackend.service.customer_service;
@@ -16,18 +16,18 @@ public class customers_serviceImpl implements customer_service {
     private final Customer_repo customersRepo;
 
     @Override
-    public List<customers> getCustomers() {
+    public List<Customers> getCustomers() {
         return customersRepo.findAll();
     }
 
     @Override
-    public Optional<customers> getCustomersById(Long id) {
+    public Optional<Customers> getCustomersById(Long id) {
         return customersRepo.findById(id);
     }
 
     @Override
-    public customers addCustomers(Customers_pojo customersPojo) {
-        customers newCustomer = new customers();
+    public Customers addCustomers(Customers_pojo customersPojo) {
+        Customers newCustomer = new Customers();
         newCustomer.setFirstName(customersPojo.getFirstName());
         newCustomer.setLastName(customersPojo.getLastName());
         newCustomer.setEmail(customersPojo.getEmail());
@@ -43,10 +43,10 @@ public class customers_serviceImpl implements customer_service {
     }
 
     @Override
-    public customers updateCustomers(Customers_pojo customersPojo, Long id) {
-        Optional<customers> customersOptional = customersRepo.findById(id);
+    public Customers updateCustomers(Customers_pojo customersPojo, Long id) {
+        Optional<Customers> customersOptional = customersRepo.findById(id);
         if (customersOptional.isPresent()) {
-            customers existingCustomer = customersOptional.get();
+            Customers existingCustomer = customersOptional.get();
             existingCustomer.setFirstName(customersPojo.getFirstName());
             existingCustomer.setLastName(customersPojo.getLastName());
             existingCustomer.setEmail(customersPojo.getEmail());

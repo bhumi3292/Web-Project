@@ -1,7 +1,7 @@
 package org.example.heritagebackend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.heritagebackend.Entity.customers;
+import org.example.heritagebackend.Entity.Customers;
 import org.example.heritagebackend.pojo.Customers_pojo;
 import org.example.heritagebackend.service.customer_service;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class customers_controller {
     private final customer_service customerService;
 
     @PostMapping
-    public customers addCustomer(@RequestBody Customers_pojo customersPojo) {
+    public Customers addCustomer(@RequestBody Customers_pojo customersPojo) {
         return customerService.addCustomers(customersPojo);
     }
 
@@ -29,19 +29,19 @@ public class customers_controller {
     }
 
     @GetMapping
-    public List<customers> getAllCustomers() {
+    public List<Customers> getAllCustomers() {
         return customerService.getCustomers();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<customers> getCustomerById(@PathVariable Long id) {
-        Optional<customers> customerOptional = customerService.getCustomersById(id);
+    public ResponseEntity<Customers> getCustomerById(@PathVariable Long id) {
+        Optional<Customers> customerOptional = customerService.getCustomersById(id);
         return customerOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<customers> updateCustomer(@PathVariable Long id, @RequestBody Customers_pojo customersPojo) {
-        customers updatedCustomer = customerService.updateCustomers(customersPojo, id);
+    public ResponseEntity<Customers> updateCustomer(@PathVariable Long id, @RequestBody Customers_pojo customersPojo) {
+        Customers updatedCustomer = customerService.updateCustomers(customersPojo, id);
         if (updatedCustomer != null) {
             return ResponseEntity.ok(updatedCustomer);
         } else {

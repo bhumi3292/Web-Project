@@ -8,7 +8,7 @@ import lombok.Setter;
 @Table
 @Setter
 @Getter
-public class cartItem {
+public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cart_item_id_seq")
@@ -20,11 +20,11 @@ public class cartItem {
 
     @ManyToOne
     @JoinColumn(name = "cartId", referencedColumnName = "cartId", foreignKey = @ForeignKey(name = "fk_cart_id"))
-    private org.example.heritagebackend.Entity.cart cart;
+    private Cart cart;
 
     @ManyToOne
     @JoinColumn(name = "productId", referencedColumnName = "productId", foreignKey = @ForeignKey(name = "fk_product_id"))
-    private products product;
+    private Products product;
 
 
 

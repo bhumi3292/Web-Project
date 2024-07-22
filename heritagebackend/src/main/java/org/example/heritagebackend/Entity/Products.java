@@ -8,7 +8,7 @@ import lombok.Setter;
 @Table
 @Setter
 @Getter
-public class products {
+public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "products_id_seq")
     @SequenceGenerator(name = "products_id_seq", sequenceName = "products_seq", allocationSize = 1)
@@ -31,4 +31,11 @@ public class products {
 
     @Column(nullable = false)
     private boolean availability;
+
+    @Lob
+    private byte[] image;
+
+    @ManyToOne
+    @JoinColumn(name = "categoryId", referencedColumnName = "categoryId", foreignKey = @ForeignKey(name = "fk_categoryId"))
+    private Categories categories;
 }

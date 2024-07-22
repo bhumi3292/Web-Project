@@ -1,7 +1,7 @@
 package org.example.heritagebackend.service.Impl;
 
 import lombok.RequiredArgsConstructor;
-import org.example.heritagebackend.Entity.categories;
+import org.example.heritagebackend.Entity.Categories;
 import org.example.heritagebackend.pojo.Categories_pojo;
 import org.example.heritagebackend.repository.Categories_repo;
 import org.example.heritagebackend.service.categories_service;
@@ -16,27 +16,27 @@ public class categories_serviceImpl implements categories_service {
     private final Categories_repo categoriesRepo;
 
     @Override
-    public List<categories> getCategories() {
+    public List<Categories> getCategories() {
         return categoriesRepo.findAll();
     }
 
     @Override
-    public Optional<categories> getCategoriesById(Long id) {
+    public Optional<Categories> getCategoriesById(Long id) {
         return categoriesRepo.findById(id);
     }
 
     @Override
-    public categories addCategories(Categories_pojo categoriesPojo) {
-        categories newCategory = new categories();
+    public Categories addCategories(Categories_pojo categoriesPojo) {
+        Categories newCategory = new Categories();
         mapPojoToEntity(newCategory, categoriesPojo);
         return categoriesRepo.save(newCategory);
     }
 
     @Override
-    public categories updateCategories(Categories_pojo categoriesPojo, Long id) {
-        Optional<categories> categoriesOptional = categoriesRepo.findById(id);
+    public Categories updateCategories(Categories_pojo categoriesPojo, Long id) {
+        Optional<Categories> categoriesOptional = categoriesRepo.findById(id);
         if (categoriesOptional.isPresent()) {
-            categories existingCategory = categoriesOptional.get();
+            Categories existingCategory = categoriesOptional.get();
             mapPojoToEntity(existingCategory, categoriesPojo);
             return categoriesRepo.save(existingCategory);
         }
@@ -48,8 +48,7 @@ public class categories_serviceImpl implements categories_service {
         categoriesRepo.deleteById(id);
     }
 
-    private void mapPojoToEntity(categories category, Categories_pojo categoriesPojo) {
+    private void mapPojoToEntity(Categories category, Categories_pojo categoriesPojo) {
         category.setCategoryName(categoriesPojo.getCategoryName());
-        category.setProduct(categoriesPojo.getProduct());
     }
 }
