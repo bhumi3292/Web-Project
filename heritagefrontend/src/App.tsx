@@ -5,6 +5,8 @@ import Home from "./Compnents/Home.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Login from "./Compnents/Login.tsx";
 import Signup from "./Compnents/Signup.tsx";
+import CartPage from "./Compnents/CartPage.tsx";
+import AddProduct from "./Compnents/AddProduct/AddProduct.tsx";
 
 const AppLayout = () => {
     return (
@@ -34,6 +36,12 @@ function App() {
                 {
                     path: "/signup",
                     element: <Signup />
+                },{
+                    path: "/cart",
+                    element: <CartPage />
+                },{
+                    path:"/AddProduct",
+                    element: <AddProduct/>
                 }
             ]
         }

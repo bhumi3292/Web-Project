@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Orders_pojo {
     private Long orderId;
-    private Customers customer;
+    private Long customerId;
     private Date orderDate;
     private Double totalAmount;
     private String shippingAddress;

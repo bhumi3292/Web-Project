@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "../CSS/Home.css";
 import hoemlogo from "./assets/homelogo.png";
 import home1 from "./assets/home1.png";
@@ -8,28 +8,46 @@ import home4 from "./assets/home4.png";
 import home5 from "./assets/home5.png";
 import home6 from "./assets/home6.png";
 import ProductCard from "./ProductCard";
+import axios from 'axios';
 
-const Home = () => {
-  const products = Array.from({ length: 20 }, (_, index) => ({
-    id: index + 1,
-    name: `Product ${index + 1}`,
-    description: `Description for Product ${index + 1}`,
-    price: `$${(Math.random() * 100).toFixed(2)}`,
-    availability: index % 2 === 0 ? 'In Stock' : 'Out of Stock',
-    image: home1
-  }));
+const Home: React.FC = () => {
+  const [categories, setCategories] = useState<string[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    // Fetch categories from API
+    axios.get('http://localhost:9090/api/categories')
+      .then(response => {
+        // Update the categories state with the fetched data
+        setCategories(response.data.map((category: { categoryName: string }) => category.categoryName));
+      })
+      .catch(error => {
+        console.error('Error fetching categories:', error);
+      });
+
+    // Fetch products from API
+    axios.get('http://localhost:9090/api/products')
+      .then(response => {
+        // Update the products state with the fetched data
+        setProducts(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+      });
+  }, []);
 
   return (
     <>
       {/* ---------------Side bar----------------- */}
       <div className="flex">
         <div className="Sidebar">
-          <button>Furniture</button>
-          <button>Clothing</button>
-          <button>Wooden Craft</button>
-          <button>Metal Craft</button>
-          <button>Jewellery</button>
-          <button>Antiques</button>
+          {categories.length > 0 ? (
+            categories.map((category, index) => (
+              <button key={index}>{category}</button>
+            ))
+          ) : (
+            <p>Loading categories...</p>
+          )}
         </div>
 
         <div className="w-3/4 p-6">
@@ -80,9 +98,13 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-            {products.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            {products.length > 0 ? (
+              products.map(product => (
+                <ProductCard key={product.productId} product={product} />
+              ))
+            ) : (
+              <p>Loading products...</p>
+            )}
           </div>
         </div>
       </div>

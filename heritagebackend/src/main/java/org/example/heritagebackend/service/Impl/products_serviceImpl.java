@@ -38,7 +38,7 @@ return products;
         product.setDescription(productsPojo.getDescription());
         product.setPrice(productsPojo.getPrice());
         product.setStockQuantity(productsPojo.getStockQuantity());
-        product.setProfile(productsPojo.getProfile().getOriginalFilename());
+//        product.setProfile(productsPojo.getProfile().getOriginalFilename());
         product.setAvailability(productsPojo.isAvailability());
         product.setImage(productsPojo.getImageBytes());
 

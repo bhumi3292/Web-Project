@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface order_service {
     List<Orders> getOrders();
+    List<Orders> getOrdersbycustomer(Long customer_id);
     Optional<Orders> getOrdersById(Long Id);
     Orders addOrders(Orders_pojo OrdersPojo);
     Orders updateOrders(Orders_pojo OrdersPojo, Long id);

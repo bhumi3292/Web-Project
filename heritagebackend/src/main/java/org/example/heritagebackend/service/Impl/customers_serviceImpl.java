@@ -31,7 +31,7 @@ public class customers_serviceImpl implements customer_service {
         newCustomer.setFirstName(customersPojo.getFirstName());
         newCustomer.setLastName(customersPojo.getLastName());
         newCustomer.setEmail(customersPojo.getEmail());
-        newCustomer.setPasswordHash(customersPojo.getPasswordHash());
+        newCustomer.setPassword(customersPojo.getPasswordHash());
         newCustomer.setPhoneNumber(customersPojo.getPhoneNumber());
         newCustomer.setAddress(customersPojo.getAddress());
         newCustomer.setCity(customersPojo.getCity());
@@ -50,7 +50,7 @@ public class customers_serviceImpl implements customer_service {
             existingCustomer.setFirstName(customersPojo.getFirstName());
             existingCustomer.setLastName(customersPojo.getLastName());
             existingCustomer.setEmail(customersPojo.getEmail());
-            existingCustomer.setPasswordHash(customersPojo.getPasswordHash());
+            existingCustomer.setPassword(customersPojo.getPasswordHash());
             existingCustomer.setPhoneNumber(customersPojo.getPhoneNumber());
             existingCustomer.setAddress(customersPojo.getAddress());
             existingCustomer.setCity(customersPojo.getCity());

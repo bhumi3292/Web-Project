@@ -18,7 +18,6 @@ public class Products_pojo {
     private String description;
     private Double price;
     private Integer stockQuantity;
-    private MultipartFile profile;
     private boolean availability;
     private MultipartFile image;
     private Long categoryId;

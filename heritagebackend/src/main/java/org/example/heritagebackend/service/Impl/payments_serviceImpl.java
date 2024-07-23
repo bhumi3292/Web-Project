@@ -38,8 +38,11 @@ public class payments_serviceImpl implements payments_service {
         Optional<Orders> ordersOptional=orders_repo.findById(PaymentsPojo.getOrderId());
         if(ordersOptional.isPresent()){
             Orders orders=ordersOptional.get();
+            orders.setOrderStatus("paid");
             payments.setOrder(orders);
+            orders_repo.save(orders);
         }
+
 
         return payments_repo.save(payments);
     }

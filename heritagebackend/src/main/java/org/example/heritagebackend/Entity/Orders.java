@@ -37,8 +37,6 @@ public class Orders {
     @Column(nullable = false)
     private String orderStatus;
 
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Payments payment;
 
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) // For automatic saving of order items

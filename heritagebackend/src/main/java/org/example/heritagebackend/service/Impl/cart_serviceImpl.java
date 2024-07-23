@@ -22,6 +22,10 @@ public class cart_serviceImpl implements cart_service {
     public List<Cart> getAllCarts() {
         return cartRepo.findAll();
     }
+    @Override
+    public List<Cart> getAllCartsByCustomer(Long customerId) {
+        return cartRepo.findByCustomerCustomerId(customerId);
+    }
 
     @Override
     public Optional<Cart> getCart(Long id) {

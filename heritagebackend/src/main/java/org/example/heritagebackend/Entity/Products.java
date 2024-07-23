@@ -27,9 +27,6 @@ public class Products {
     private Integer stockQuantity;
 
     @Column(nullable = false)
-    private String profile;
-
-    @Column(nullable = false)
     private boolean availability;
 
     @Lob

@@ -38,6 +38,11 @@ public class cart_controller {
         Optional<Cart> cartOptional = cartService.getCart(id);
         return cartOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<List<Cart>> getCartbyCustomer(@PathVariable Long customerId) {
+        List<Cart> cartOptional = cartService.getAllCartsByCustomer(customerId);
+        return ResponseEntity.ok(cartOptional);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Cart> updateCart(@PathVariable Long id, @RequestBody Cart_pojo cartPojo) {

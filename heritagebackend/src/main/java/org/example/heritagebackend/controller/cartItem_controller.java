@@ -33,6 +33,10 @@ public class cartItem_controller {
     public List<CartItem> getAllCartItems() {
         return cartItemService.getCartItem();
     }
+@GetMapping("/cart/{cartId}")
+    public List<CartItem> getAllCartItemsbyCartId(@PathVariable Long cartId) {
+        return cartItemService.getCartItembycartId(cartId);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<CartItem> getCartItemById(@PathVariable Long id) {

@@ -32,6 +32,10 @@ public class order_controller {
     public List<Orders> getAllOrders() {
         return orderService.getOrders();
     }
+    @GetMapping("/user/{customerId}")
+    public List<Orders> getOrdersbycustomer(@PathVariable Long customerId) {
+        return orderService.getOrdersbycustomer(customerId);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Orders> getOrder(@PathVariable Long id) {

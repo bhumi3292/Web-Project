@@ -1,5 +1,6 @@
 package org.example.heritagebackend.service.Impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.heritagebackend.Entity.Cart;
 import org.example.heritagebackend.Entity.CartItem;
@@ -29,6 +30,11 @@ public class cartItem_serviceImpl implements cartItem_service {
     @Override
     public Optional<CartItem> getCartItemById(Long id) {
         return cartItemRepo.findById(id);
+    }
+    @Override
+    @Transactional
+    public List<CartItem> getCartItembycartId(Long cartId) {
+        return cartItemRepo.findByCartCustomerCustomerId(cartId);
     }
 
     @Override

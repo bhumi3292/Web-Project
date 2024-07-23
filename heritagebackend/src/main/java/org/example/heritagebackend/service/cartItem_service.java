@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface cartItem_service {
 
     List<CartItem> getCartItem();
+    List<CartItem> getCartItembycartId(Long cartId);
     Optional<CartItem> getCartItemById(Long Id);
     CartItem addCartItem(CartItem_pojo CartItemPojo);
     CartItem updateCartItem(CartItem_pojo CartItemPojo, Long id);

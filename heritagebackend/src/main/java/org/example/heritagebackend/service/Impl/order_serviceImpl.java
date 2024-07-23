@@ -1,8 +1,10 @@
 package org.example.heritagebackend.service.Impl;
 
 import lombok.RequiredArgsConstructor;
+import org.example.heritagebackend.Entity.Customers;
 import org.example.heritagebackend.Entity.Orders;
 import org.example.heritagebackend.pojo.Orders_pojo;
+import org.example.heritagebackend.repository.Customer_repo;
 import org.example.heritagebackend.repository.Orders_repo;
 import org.example.heritagebackend.service.order_service;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class order_serviceImpl implements order_service {
     private final Orders_repo ordersRepo;
+    private final Customer_repo customerRepo;
 
     @Override
     public List<Orders> getOrders() {
         return ordersRepo.findAll();
+    }
+ @Override
+    public List<Orders> getOrdersbycustomer(Long customer_id) {
+        return ordersRepo.findByCustomerCustomerId(customer_id);
     }
 
     @Override
@@ -50,12 +57,18 @@ public class order_serviceImpl implements order_service {
     }
 
     private void mapPojoToEntity(Orders order, Orders_pojo ordersPojo) {
-        order.setCustomer(ordersPojo.getCustomer());
+        Optional<Customers> ordersOptional=customerRepo.findById(ordersPojo.getCustomerId());
+        if (ordersOptional.isPresent()) {
+            Customers customers = ordersOptional.get();
+            order.setCustomer(customers);
+            order.setShippingAddress(customers.getAddress());
+        }
         order.setOrderDate(new Date());
         order.setTotalAmount(ordersPojo.getTotalAmount());
-        order.setShippingAddress(ordersPojo.getShippingAddress());
-        order.setOrderStatus(ordersPojo.getOrderStatus());
-        order.setPayment(ordersPojo.getPayment());
-//        order.setOrderShipment(ordersPojo.getOrderShipment());
+
+        order.setOrderStatus("pending");
+//        order.setPayment(ordersPojo.getPayment());
+//        order.setOrderShipment(ordersPojo.getOrder
+//        Shipment());
     }
 }
